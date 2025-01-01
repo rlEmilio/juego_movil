@@ -17,7 +17,8 @@
   width: 300px;
   margin: auto;
   font-family: "Almendra SC";
-  text-shadow: 4px 4px 4px rgba(58, 49, 14, 0.917);
+  text-shadow: 4px 4px 4px rgba(58, 49, 14, 0.917),
+    4px 4px 4px rgba(58, 49, 14, 0.917);
   border-radius: 5px;
 }
 
@@ -42,53 +43,131 @@
   margin-top: 3rem;
   margin-left: 6rem;
   font-family: "Almendra SC";
-  display: grid;
-  grid-template-columns:auto auto;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 300px;
-
-
-
 }
 
 .boton_alquimia {
   width: 250px;
   height: 100px;
   font-size: 40px;
-  text-shadow: 1px 1px 2px rgba(58, 49, 14, 0.917);
+  text-shadow: 1px 1px 2px rgba(88, 72, 2, 0.917),
+    1px 1px 2px rgba(255, 255, 255, 0.917);
   border-radius: 10px;
   background-color: rgb(255, 238, 208);
   box-shadow: 0px 0px 10px 2px rgb(81, 60, 0);
 }
 
-.boton{
+.boton {
   height: 200px;
 }
 
-.simbolo {
+.simbolo_alquimia {
   position: relative;
   top: -105px;
   left: 230px;
   z-index: 1;
   font-size: 40px;
 }
-.barra_progreso {
-  position: relative;
-  top: -40px;
-}
-.barra_progreso progress {
+
+.caldero {
+  position: absolute;
+  margin-top: -180px;
+  margin-left: 280px;
   width: 250px;
 }
 
-.monedas {
-  width: 500px;
-  display: flex;
-  align-items: baseline;
-  line-height: 6px;
-  text-shadow: 5px 5px 10px  rgba(0, 0, 0, 0.8), 0px 0px 10px rgba(11, 10, 10, 0.5);  /* Sombra más fuerte y luminosa */
-  height: 100px;
-  font-size: 40px;
-  color: rgb(255, 255, 0); 
+.caldero img {
+  width: 150px;
+  height: 120px;
+  display: block;
+  margin: auto;
+  filter: drop-shadow(3px 3px 1px rgb(0, 0, 0));
+}
+
+.animacion_moneda{
+  animation: mover 1000ms ease-in-out;
+}
+
+.moneda img {
+  width: 50px;
+  filter: drop-shadow(3px 1px 0px rgb(0, 0, 0));
+  position: absolute;
+  margin-top: -190px;
+  margin-left: 400px;
+  animation: rotar_moneda 1000ms ease-in-out;
 
 }
 
+@keyframes mover{
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(100px, -100px);
+  }
+  100% {
+    transform: translate(200px, 0);
+  }
+}
+
+@keyframes rotar_moneda{
+  from{
+    transform: rotate(0deg) rotateY(0deg);
+  }
+  to{
+    transform: rotate(90deg) rotateY(360deg);
+  }
+
+}
+
+.texto_monedas p {
+  border-radius: 10px;
+  background-color: rgb(145, 53, 53);
+  width: 500px;
+  height: 100px;
+  padding-right: 20px;
+  padding-left: 20px;
+  font-size: 40px;
+  color: gold;
+  text-shadow: 5px 5px 7px rgba(0, 0, 0, 1), 5px 5px 7px rgba(0, 0, 0, 0.8);
+
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -80px;
+  box-shadow: 0px 0px 10px 2px black;
+}
+
+
+.edificios{
+  margin-left: 6rem;
+  font-family: "Almendra SC";
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+ 
+}
+
+.boton_edificios{
+  width: 250px;
+  height: 100px;
+  font-size: 40px;
+  text-shadow: 1px 1px 2px rgba(88, 72, 2, 0.917),
+    1px 1px 2px rgba(255, 255, 255, 0.917);
+  border-radius: 10px;
+  background-color: rgb(255, 238, 208);
+  box-shadow: 0px 0px 10px 2px rgb(81, 60, 0);
+}
+
+
+.simbolo_edificios {
+  position: relative;
+  top: -105px;
+  left: 230px;
+  z-index: 1;
+  font-size: 40px;
+}
