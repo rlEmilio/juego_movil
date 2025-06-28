@@ -11,56 +11,264 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <script src="./scripts/index.js"></script>
-  
-    <link rel="stylesheet" href="./estilos/estilo_index.css" />
+    <script type="module" src="./scripts/panel_principal.js"></script>
+    <script type="module" src="./scripts/edificios.js"></script>
+
+    <link rel="stylesheet" href="./estilos/estilo_principal.css" />
+    <link rel="stylesheet" href="./estilos/estilo_edificios.css" />
+    <link rel="stylesheet" href="./estilos/marcador_recursos.css" />
   </head>
   <body>
-
     <!--contenedor-->
-    <div class="container mt-5">
-       <!--titulo-->
-      <div class="titulo">
-        <img src="./imagenes/titulo.png" alt="" />
-        <p class="texto_titulo">Tabern Rush</p>
-      </div>
+    <div class="juego">
+     
+    
 
-       <!--bloque alquimia y monedas-->
-      <div class="alquimia">
-        <div class="boton">
-          <input
-            type="button"
-            class="boton_alquimia btn btn-light"
-            name="alquimia"
-            value="Alquimia"
-          />
-          <div class="simbolo_alquimia">!</div>
-          <div class="caldero">
-            <img src="./imagenes/caldero.gif" hidden alt="" />
-          </div>
-          <div class="moneda">
-            <img src="./imagenes/moneda.png" hidden alt="" />
-          </div>
+      <!--musiquilla-->
+      <audio id="musica_fondo" src="sonidos/santa maria.mp3" loop></audio>
+      <button id="boton_musica" class="btn-musica">🔊</button>
+
+      <div class="contenedor_principal container mt-5">
+        <!--titulo-->
+        <div class="titulo">
+          <img src="./imagenes/titulo.png" alt="" />
+          <p class="texto_titulo">Tabern Rush</p>
         </div>
 
-        <div class="texto_monedas">
+        <!--bloque alquimia y monedas-->
+        <div class="alquimia">
+          <div class="boton">
+            <input
+              type="button"
+              class="boton_alquimia btn btn-light"
+              name="alquimia"
+              value="Alquimia"
+            />
+            <div class="caldero">
+              <img src="./imagenes/caldero.gif" hidden alt="" />
+            </div>
+            <div class="moneda">
+              <img src="./imagenes/moneda.png" hidden alt="" />
+            </div>
+          </div>
+
+          <!-- <div class="texto_monedas">
           <p hidden></p>
+        </div> -->
+          <img src="" alt="" />
         </div>
-        <img src="" alt="" />
+
+        <!--boton edificios-->
+        <div class="edificios">
+          <div class="boton_edificios" hidden>
+            <input
+              type="button"
+              class="boton_edificios btn btn-light"
+              name="edificios"
+              value="Edificios"
+            />
+          </div>
+        </div>
+
+        <!--boton recoger-->
+        <div class="recoger">
+          <div class="boton_recoger" hidden>
+            <input
+              type="button"
+              class="boton_recoger btn btn-light"
+              name="recoger"
+              value="Recoger"
+            />
+          </div>
+          <div class="contador" hidden></div>
+        </div>
       </div>
 
-       <!--boton edificios-->
-      <div class="edificios" >
-        <div class="boton_edificios" hidden>
-        <a href="edificios.html"><input
-          type="button"
-          class="boton_edificios btn btn-light"
-          name="edificios"
-          value="Edificios"
-        /> </a>  
-        <div class="simbolo_edificios">!</div>
+      <!--panel edificios-->
+      <!--contenedor-->
+      <div class="container contenedor_edificios mt-5">
+        <div class="volver">
+          <img src="./imagenes/flecha-izquierda.png" alt="" />
+        </div>
+        <div class="titulo">
+          <img src="./imagenes/titulo.png" alt="" />
+          <p class="texto_titulo">Edificios</p>
         </div>
 
+        <div class="contenedor_tabla">
+          <table class="tabla_edificios">
+            <tbody>
+              <tr class="almacen">
+                <td>
+                  <input
+                    class="boton_edificio"
+                    type="button"
+                    name="boton_almacen"
+                    value="Almacén"
+                  />
+                </td>
+                <td class="coste">
+                  <img src="./imagenes/moneda_icono.png" alt="" />x 2
+                </td>
+              </tr>
+              <tr class="cabana" hidden>
+                <td>
+                  <input
+                    class="boton_edificio"
+                    type="button"
+                    name="boton_cabana"
+                    value="Cabaña"
+                  />
+                </td>
+                <td class="coste">
+                  <img src="./imagenes/moneda_icono.png" alt="" />x<span> 6</span>
+                  <img src="./imagenes/piedra.png" alt="" />x <span> 6</span>
+                </td>
+              </tr>
+              <tr class="granja" hidden>
+                <td>
+                  <input
+                    class="boton_edificio"
+                    type="button"
+                    name="boton_granja"
+                    value="Granja"
+                  />
+                </td>
+                <td class="coste">
+                  <img src="./imagenes/moneda_icono.png" alt="" /> x 8
+
+                  <img src="./imagenes/piedra.png" alt="" /> x 9
+                  <img src="./imagenes/madera.png" alt="" />x 5
+                </td>
+              </tr>
+              <tr class="mercado" hidden>
+                <td>
+                  <input
+                    class="boton_edificio"
+                    type="button"
+                    name="boton_mercado"
+                    value="Mercado"
+                  />
+                </td>
+                <td class="coste">
+                  <img src="./imagenes/piedra.png" alt="" /> x 8
+                  <img src="./imagenes/madera.png" alt="" /> x 9
+                </td>
+              </tr>
+              <tr class="establos" hidden>
+                <td>
+                  <input
+                    class="boton_edificio"
+                    type="button"
+                    name="boton_establos"
+                    value="Establos"
+                  />
+                </td>
+                <td class="coste">
+                  <img src="./imagenes/moneda_icono.png" alt="" /> x 8
+                  <img src="./imagenes/madera.png" alt="" /> x 10
+                  <img src="./imagenes/trigo.png" alt="" /> x 5
+                </td>
+              </tr>
+              <tr class="molino" hidden>
+                <td>
+                  <input
+                    class="boton_edificio"
+                    type="button"
+                    name="boton_molino"
+                    value="Molino"
+                  />
+                </td>
+                <td class="coste">
+                  <img src="./imagenes/moneda_icono.png" alt="" /> x 5
+                  <img src="./imagenes/piedra.png" alt="" /> x 8
+                  <img src="./imagenes/caballo.png" alt="" /> x 3
+                </td>
+              </tr>
+              <tr class="taberna" hidden>
+                <td>
+                  <input
+                    class="boton_edificio"
+                    type="button"
+                    name="boton_taberna"
+                    value="Taberna"
+                  />
+                </td>
+                <td class="coste">
+                  <img src="./imagenes/moneda_icono.png" alt="" /> x 10
+                  <img src="./imagenes/madera.png" alt="" /> x 7
+                  <img src="./imagenes/piedra.png" alt="" /> x 9
+                  <img src="./imagenes/caballo.png" alt="" /> x 9
+                  <img src="./imagenes/pan.png" alt="" /> x 10
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!--marcador de recursos-->
+      <div class="marcador_recursos">
+        <table class="tabla_marcador">
+          <tr>
+            <td>
+              <img src="./imagenes/moneda.png" alt="" />&nbsp;<span
+                id="monedaMarcador"
+                >0</span
+              >
+            </td>
+            <td>
+              <img src="./imagenes/piedra.png" alt="" />&nbsp;<span
+                id="piedraMarcador"
+                >0</span
+              >
+            </td>
+            <td>
+              <img src="./imagenes/madera.png" alt="" />&nbsp;<span
+                id="maderaMarcador"
+                >0</span
+              >
+            </td>
+            <td>
+              <img src="./imagenes/trabajador.png" alt="" />&nbsp;<span
+                id="trabajadorMarcador"
+                >0</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <img src="./imagenes/trigo.png" alt="" />&nbsp;<span
+                id="trigoMarcador"
+                >0</span
+              >
+            </td>
+            <td>
+              <img src="./imagenes/cuero.png" alt="" />&nbsp;<span
+                id="cueroMarcador"
+                >0</span
+              >
+            </td>
+            <td>
+              <img src="./imagenes/caballo.png" alt="" />&nbsp;<span
+                id="caballoMarcador"
+                >0</span
+              >
+            </td>
+            <td>
+              <img src="./imagenes/pan.png" alt="" />&nbsp;<span
+                id="panMarcador"
+                >0</span
+              >
+            </td>
+          </tr>
+        </table>
+      </div>
+
+        <!--panel comienzo-->
+      <div class="panel_comienzo container mt-5">
+
+        
       </div>
     </div>
   </body>

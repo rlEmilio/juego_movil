@@ -1,0 +1,34 @@
+.marcador_recursos {
+  position: absolute;
+  top: 83%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999; 
+  background-color: rgba(255, 255, 255, 0.85); 
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  font-size: 13px;
+  z-index: -1;
+}
+
+.tabla_marcador{
+    border-collapse: separate;
+    width: 100%;
+      
+}
+
+ .tabla_marcador img{
+      width: 25px;
+      max-height: 30px;
+      
+    }
+
+.tabla_marcador td{
+      border: 1px solid rgb(182, 165, 148);
+      padding: 5px 20px;
+      white-space: nowrap;
+      max-width: 80px; 
+      overflow: hidden;
+      
+}

@@ -1,59 +1,105 @@
-.container{
-  background-image: url("../imagenes/mercado.webp");
+@font-face {
+  font-family: "Almendra SC";
+  src: url(./fuentes/AlmendraSC-Regular.ttf);
 }
-.edificios{
+
+.contenedor_edificios {
+  background-image: url("../imagenes/mercado.webp");
+  position: absolute;
+  width: 375px;
+  height: 667px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-size: cover;
+  z-index: -1;
+  font-family: "Almendra SC";
+}
+
+.contenedor_tabla {
   display: flex;
   justify-content: center;
-  width: 100%; 
-  padding: 0; 
-  margin: 0; 
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  margin-top: 60%;
 }
 
 .tabla_edificios {
-    border: 1px solid black;
-    border-radius: 5px;
-    font-family: "Almendra SC";
-    margin: 0;
-   
-   
-  }
+  border-radius: 5px;
+  border-collapse: separate;
+  border-spacing: 0 10px; 
 
-  .tabla_edificios img{
-    max-width: 40px;
-    max-height: 40px;
-    
-  }
+
+}
+
+
+.tabla_edificios img {
+  max-width: 30px;
+  max-height: 20px;
+ 
+}
+
+.coste {
+  background-color:  rgb(253, 242, 221);
+  font-size: 18px;
+  width: 160px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 2px rgb(81, 60, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  gap: 4px;
+  margin-top: 1.5px;
+ 
+
+
+}
+
+.boton_edificio {
+  font-size: 18px;
+  color: gold;
+  text-shadow: 5px 5px 7px rgba(0, 0, 0, 1), 5px 5px 7px rgba(0, 0, 0, 0.8);
+  background-color: rgb(39, 37, 30);
+  box-shadow: 0px 0px 10px 2px rgb(81, 60, 0);
+  width: 130px;
+  height: 45px;
+  border-radius: 5px;
+  z-index: 1;
+  position: relative;
+}
+
+
+
+.titulo img {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  filter: drop-shadow(5px 5px 5px rgb(81, 60, 0));
+  position: relative;
+}
+
+
+.volver img {
+  width: 40px;
+  background-color: rgb(223, 229, 234);
+  border-radius: 50%;
+  padding: 10px;
+  margin-top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: drop-shadow(5px 5px 5px rgb(81, 60, 0));
+  z-index: 1;
+  position:absolute;
+  transition: 0.3s ease;
+
+ 
+}
+
+.volver img:hover{
+  transform: translateX(-50%) scale(1.1);
+  cursor: pointer;
   
-  .coste {
-    background-color: rgb(225, 225, 225);
-    font-size: 25px;
-    text-shadow: 1px 1px 2px rgba(41, 34, 3, 0.917), 1px 1px 2px rgba(255, 255, 255, 0.917);
-    width: 350px;
-    text-align: center;
-    border-radius: 5px;
-    max-height: 100px;
-    border: 1px solid black;
-   
-    
-  }
-  
-  .boton {
-    font-size: 40px;
-    color: gold;
-    text-shadow: 5px 5px 7px rgba(0, 0, 0, 1), 5px 5px 7px rgba(0, 0, 0, 0.8);
-    background-color: rgb(39, 37, 30);
-    box-shadow: 0px 0px 10px 2px rgb(81, 60, 0);
-    width: 250px;
-    height: 100px;
-    border-radius: 5px;
-  }
-  
-  .volver img{
-    width: 100px;
-    background-color: rgb(223, 229, 234);
-    border-radius: 50%;
-    padding: 20px;
-    margin-top: 30px;
-    margin-left: 20px;
-    filter: drop-shadow(5px 5px 5px rgb(81, 60, 0));
-  }
+}
