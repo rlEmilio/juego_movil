@@ -12,26 +12,22 @@
   font-family: "Almendra SC";
 }
 
-
-.panel_comienzo{
-  position: absolute; 
+.panel_comienzo {
+  position: absolute;
   top: 0;
   left: 0;
   width: 375px;
   height: 667px;
   z-index: 999;
   background-image: url(../imagenes/imagen_comienzo.png);
-  background-size: cover; 
+  background-size: cover;
   background-position: center;
   cursor: pointer;
   transition: opacity 1s ease;
- 
-
 }
 
 .panel_comienzo.animar {
   animation: desvanecer 4000ms ease-in forwards;
- 
 }
 
 @keyframes desvanecer {
@@ -64,7 +60,6 @@
   text-align: center;
   color: white;
   text-shadow: 4px 4px 4px rgba(58, 49, 14, 0.917);
- 
 }
 
 .titulo img {
@@ -82,11 +77,9 @@
   text-shadow: 2px 2px 2px black;
   width: 100%;
   text-align: center;
-  
 }
 
 .alquimia {
-  margin-top: 180px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -99,14 +92,35 @@
 .boton_alquimia {
   width: 120px;
   height: 50px;
-  font-size: 20px;
-  text-shadow: 1px 1px 2px rgba(88, 72, 2, 0.917), 1px 1px 2px rgba(255, 255, 255, 0.917);
+  font-size: 18px;
+  text-shadow: 1px 1px 2px rgba(88, 72, 2, 0.917),
+    1px 1px 2px rgba(255, 255, 255, 0.917);
   border-radius: 10px;
   background-color: rgb(255, 238, 208);
   box-shadow: 0px 0px 10px 2px rgb(81, 60, 0);
 }
 
+.mercado_principal {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* gap: 0.5rem; */
+  /* margin-left: 12.5%; */
+  justify-content: center;
+}
 
+.boton_mercado_principal {
+  width: 120px;
+  height: 50px;
+  font-size: 18px;
+  text-shadow: 1px 1px 2px rgba(88, 72, 2, 0.917),
+    1px 1px 2px rgba(255, 255, 255, 0.917);
+  border-radius: 10px;
+  background-color: rgb(255, 238, 208);
+  box-shadow: 0px 0px 10px 2px rgb(81, 60, 0);
+}
 
 .caldero {
   position: absolute;
@@ -118,18 +132,17 @@
 
 .caldero img {
   width: 100%;
-    height: 100%;
+  height: 100%;
   filter: drop-shadow(3px 3px 1px rgb(0, 0, 0));
 }
 
-.moneda{
+.moneda {
   position: absolute;
   top: 30%;
   left: 50%;
 }
 
 .moneda img {
-
   width: 30px;
   height: 30px;
   filter: drop-shadow(3px 1px 0px rgb(0, 0, 0));
@@ -178,9 +191,9 @@
   padding: 10px;
 }
 
- .edificios {
+.edificios {
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -192,17 +205,17 @@
 .boton_edificios {
   width: 120px;
   height: 50px;
-  font-size: 20px;
-  text-shadow: 1px 1px 2px rgba(88, 72, 2, 0.917), 1px 1px 2px rgba(255, 255, 255, 0.917);
+  font-size: 18px;
+  text-shadow: 1px 1px 2px rgba(88, 72, 2, 0.917),
+    1px 1px 2px rgba(255, 255, 255, 0.917);
   border-radius: 10px;
   background-color: rgb(255, 238, 208);
   box-shadow: 0px 0px 10px 2px rgb(81, 60, 0);
 }
 
-
- .recoger {
+.recoger {
   width: 100%;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -214,14 +227,15 @@
 .boton_recoger {
   width: 120px;
   height: 50px;
-  font-size: 20px;
-  text-shadow: 1px 1px 2px rgba(88, 72, 2, 0.917), 1px 1px 2px rgba(255, 255, 255, 0.917);
+  font-size: 18px;
+  text-shadow: 1px 1px 2px rgba(88, 72, 2, 0.917),
+    1px 1px 2px rgba(255, 255, 255, 0.917);
   border-radius: 10px;
   background-color: rgb(255, 238, 208);
   box-shadow: 0px 0px 10px 2px rgb(81, 60, 0);
 }
 
-.contador{
+.contador {
   font-size: 20px;
   color: gold;
   background-color: rgba(39, 37, 30, 0.9);
@@ -229,7 +243,7 @@
   border-radius: 8px;
   box-shadow: 0 0 10px 1px rgba(255, 215, 0, 0.6); /* resplandor dorado */
   text-align: center;
- 
+
   display: inline-block;
   animation: parpadeo 1s infinite alternate;
 }
@@ -243,10 +257,27 @@
   font-size: 1rem;
   transition: 0.3s;
   z-index: 999;
- 
 }
 
 .btn-musica:hover {
-  transform:scale(1.1) ; 
+  transform: scale(1.1);
+}
+
+.scroll-botones {
+  max-height: 280px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0 auto;
+  border-radius: 12px;
+
+}
+
+
+.contenedor_botones {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  margin-top: 55%;
+  padding-bottom: 10px;
   
 }

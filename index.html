@@ -17,13 +17,11 @@
     <link rel="stylesheet" href="./estilos/estilo_principal.css" />
     <link rel="stylesheet" href="./estilos/estilo_edificios.css" />
     <link rel="stylesheet" href="./estilos/marcador_recursos.css" />
+    <link rel="stylesheet" href="./estilos/estilo_mercado.css">
   </head>
   <body>
     <!--contenedor-->
     <div class="juego">
-     
-    
-
       <!--musiquilla-->
       <audio id="musica_fondo" src="sonidos/santa maria.mp3" loop></audio>
       <button id="boton_musica" class="btn-musica">🔊</button>
@@ -35,52 +33,66 @@
           <p class="texto_titulo">Tabern Rush</p>
         </div>
 
-        <!--bloque alquimia y monedas-->
-        <div class="alquimia">
-          <div class="boton">
-            <input
-              type="button"
-              class="boton_alquimia btn btn-light"
-              name="alquimia"
-              value="Alquimia"
-            />
-            <div class="caldero">
-              <img src="./imagenes/caldero.gif" hidden alt="" />
+        <!--bloque botones-->
+        <div class="contenedor_botones scroll-botones">
+          <div class="alquimia">
+            <div class="boton">
+              <input
+                type="button"
+                class="boton_alquimia btn btn-light"
+                name="alquimia"
+                value="Alquimia"
+              />
+              <div class="caldero">
+                <img src="./imagenes/caldero.gif" hidden alt="" />
+              </div>
+              <div class="moneda">
+                <img src="./imagenes/moneda.png" hidden alt="" />
+              </div>
             </div>
-            <div class="moneda">
-              <img src="./imagenes/moneda.png" hidden alt="" />
-            </div>
-          </div>
 
-          <!-- <div class="texto_monedas">
+            <!-- <div class="texto_monedas">
           <p hidden></p>
         </div> -->
-          <img src="" alt="" />
-        </div>
-
-        <!--boton edificios-->
-        <div class="edificios">
-          <div class="boton_edificios" hidden>
-            <input
-              type="button"
-              class="boton_edificios btn btn-light"
-              name="edificios"
-              value="Edificios"
-            />
+            <img src="" alt="" />
           </div>
-        </div>
 
-        <!--boton recoger-->
-        <div class="recoger">
-          <div class="boton_recoger" hidden>
-            <input
-              type="button"
-              class="boton_recoger btn btn-light"
-              name="recoger"
-              value="Recoger"
-            />
+          <!--boton edificios-->
+          <div class="edificios">
+            <div class="boton_edificios" hidden>
+              <input
+                type="button"
+                class="boton_edificios btn btn-light"
+                name="edificios"
+                value="Edificios"
+              />
+            </div>
           </div>
-          <div class="contador" hidden></div>
+
+          <!--boton recoger-->
+          <div class="recoger">
+            <div class="boton_recoger" hidden>
+              <input
+                type="button"
+                class="boton_recoger btn btn-light"
+                name="recoger"
+                value="Recoger"
+              />
+            </div>
+            <div class="contador" hidden></div>
+          </div>
+
+          <!--boton mercado-->
+          <div class="mercado_principal" >
+            <div class="boton_mercado_principal" hidden>
+              <input
+                type="button"
+                class="boton_mercado_principal btn btn-light"
+                name="mercado_principal"
+                value="Mercado"
+              />
+            </div>
+          </div>
         </div>
       </div>
 
@@ -95,7 +107,7 @@
           <p class="texto_titulo">Edificios</p>
         </div>
 
-        <div class="contenedor_tabla">
+        <div class="contenedor_tabla scroll-edificios">
           <table class="tabla_edificios">
             <tbody>
               <tr class="almacen">
@@ -108,9 +120,12 @@
                   />
                 </td>
                 <td class="coste">
-                  <img src="./imagenes/moneda_icono.png" alt="" />x 2
+                  <span class="recurso"
+                    >x 2 <img src="./imagenes/moneda_icono.png" alt=""
+                  /></span>
                 </td>
               </tr>
+
               <tr class="cabana" hidden>
                 <td>
                   <input
@@ -121,8 +136,13 @@
                   />
                 </td>
                 <td class="coste">
-                  <img src="./imagenes/moneda_icono.png" alt="" />x<span> 6</span>
-                  <img src="./imagenes/piedra.png" alt="" />x <span> 6</span>
+                  <span class="recurso"
+                    >x<span> 6</span>
+                    <img src="./imagenes/moneda_icono.png" alt=""
+                  /></span>
+                  <span class="recurso"
+                    >x <span>6</span> <img src="./imagenes/piedra.png" alt=""
+                  /></span>
                 </td>
               </tr>
               <tr class="granja" hidden>
@@ -135,10 +155,15 @@
                   />
                 </td>
                 <td class="coste">
-                  <img src="./imagenes/moneda_icono.png" alt="" /> x 8
-
-                  <img src="./imagenes/piedra.png" alt="" /> x 9
-                  <img src="./imagenes/madera.png" alt="" />x 5
+                  <span class="recurso"
+                    >x 8 <img src="./imagenes/moneda_icono.png" alt=""
+                  /></span>
+                  <span class="recurso"
+                    >x 9 <img src="./imagenes/piedra.png" alt=""
+                  /></span>
+                  <span class="recurso"
+                    >x 5 <img src="./imagenes/madera.png" alt=""
+                  /></span>
                 </td>
               </tr>
               <tr class="mercado" hidden>
@@ -151,8 +176,12 @@
                   />
                 </td>
                 <td class="coste">
-                  <img src="./imagenes/piedra.png" alt="" /> x 8
-                  <img src="./imagenes/madera.png" alt="" /> x 9
+                  <span class="recurso"
+                    >x 8 <img src="./imagenes/piedra.png" alt=""
+                  /></span>
+                  <span class="recurso"
+                    >x 9 <img src="./imagenes/madera.png" alt=""
+                  /></span>
                 </td>
               </tr>
               <tr class="establos" hidden>
@@ -165,9 +194,15 @@
                   />
                 </td>
                 <td class="coste">
-                  <img src="./imagenes/moneda_icono.png" alt="" /> x 8
-                  <img src="./imagenes/madera.png" alt="" /> x 10
-                  <img src="./imagenes/trigo.png" alt="" /> x 5
+                  <span class="recurso"
+                    >x 8 <img src="./imagenes/moneda_icono.png" alt=""
+                  /></span>
+                  <span class="recurso"
+                    >x 10 <img src="./imagenes/madera.png" alt=""
+                  /></span>
+                  <span class="recurso"
+                    >x 5 <img src="./imagenes/trigo.png" alt=""
+                  /></span>
                 </td>
               </tr>
               <tr class="molino" hidden>
@@ -180,9 +215,15 @@
                   />
                 </td>
                 <td class="coste">
-                  <img src="./imagenes/moneda_icono.png" alt="" /> x 5
-                  <img src="./imagenes/piedra.png" alt="" /> x 8
-                  <img src="./imagenes/caballo.png" alt="" /> x 3
+                  <span class="recurso"
+                    >x 5 <img src="./imagenes/moneda_icono.png" alt=""
+                  /></span>
+                  <span class="recurso"
+                    >x 8 <img src="./imagenes/piedra.png" alt=""
+                  /></span>
+                  <span class="recurso"
+                    >x 3 <img src="./imagenes/caballo.png" alt=""
+                  /></span>
                 </td>
               </tr>
               <tr class="taberna" hidden>
@@ -195,17 +236,94 @@
                   />
                 </td>
                 <td class="coste">
-                  <img src="./imagenes/moneda_icono.png" alt="" /> x 10
-                  <img src="./imagenes/madera.png" alt="" /> x 7
-                  <img src="./imagenes/piedra.png" alt="" /> x 9
-                  <img src="./imagenes/caballo.png" alt="" /> x 9
-                  <img src="./imagenes/pan.png" alt="" /> x 10
+                  <span class="recurso"
+                    >x 10 <img src="./imagenes/moneda_icono.png" alt=""
+                  /></span>
+                  <span class="recurso"
+                    >x 7 <img src="./imagenes/madera.png" alt=""
+                  /></span>
+                  <span class="recurso"
+                    >x 9 <img src="./imagenes/piedra.png" alt=""
+                  /></span>
+                  <span class="recurso"
+                    >x 9 <img src="./imagenes/caballo.png" alt=""
+                  /></span>
+                  <span class="recurso"
+                    >x 10 <img src="./imagenes/pan.png" alt=""
+                  /></span>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+
+
+      <!--panel mercado-->
+        <div class="panel_mercado container mt-5">
+        <!--titulo-->
+        <div class="titulo">
+          <img src="./imagenes/titulo.png" alt="" />
+          <p class="texto_titulo">Mercado</p>
+        </div>
+         <div class="volver">
+          <img src="./imagenes/flecha-izquierda.png" alt="" />
+        </div>
+
+        <div class="contenedor_tabla">
+          <table class="tabla_comercio">
+            <tbody>
+              <tr class="producto">
+                <td>
+                  <input
+                    class="boton_producto"
+                    type="button"
+                    name="boton_cuero"
+                    value="Cuero"
+                  />
+                </td>
+                <td class="coste">
+                  <span class="recurso"
+                    >x 3 <img src="./imagenes/moneda_icono.png" alt=""
+                  /></span>
+                </td>
+              </tr>
+
+              <tr class="producto" >
+                <td>
+                  <input
+                    class="boton_producto"
+                    type="button"
+                    name="boton_piedra"
+                    value="Piedra"
+                  />
+                </td>
+                <td class="coste">
+                  <span class="recurso"
+                    >x<span> 1</span>
+                    <img src="./imagenes/moneda_icono.png" alt=""
+                  /></span>
+                </td>
+              </tr>
+              <tr class="producto" >
+                <td>
+                  <input
+                    class="boton_producto"
+                    type="button"
+                    name="boton_madera"
+                    value="Madera"
+                  />
+                </td>
+                <td class="coste">
+                  <span class="recurso"
+                    >x 1 <img src="./imagenes/moneda_icono.png" alt=""
+                  /></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
 
       <!--marcador de recursos-->
       <div class="marcador_recursos">
@@ -265,11 +383,8 @@
         </table>
       </div>
 
-        <!--panel comienzo-->
-      <div class="panel_comienzo container mt-5">
-
-        
-      </div>
+      <!--panel comienzo-->
+      <div class="panel_comienzo container mt-5"></div>
     </div>
   </body>
 </html>

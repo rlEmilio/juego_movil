@@ -1,7 +1,22 @@
+//efecto sonido compra en mercado
+const sonidoCompra = new Audio("./sonidos/compra.mp3");
+sonidoCompra.preload = "auto";
+sonidoCompra.volume = 0.7;
 
-let monedas = 30; 
+//efecto sonido generar moneda
+const sonidoMoneda = new Audio("./sonidos/moneda.mp3");
+sonidoMoneda.preload = "auto";
+sonidoMoneda.volume = 0.7;
+
+//exporto objeto con estado de sonido que se comparte en tiempo real entre archivos
+export const sonido = {
+  activado: true
+};
+
+
+let monedas = 20;
 let artesanos = 0;
-let madera = 0;
+let madera = 20;
 let trigo = 0;
 let piedra = 50;
 let caballos = 0;
@@ -19,13 +34,14 @@ localStorage.setItem("pan", pan);
 
 let pagina_principal;
 let pagina_edificios;
+let pagina_mercado;
 
 export function guardarMonedas(monedas) {
   localStorage.setItem("monedas", monedas);
 }
 
 window.onload = function () {
-  //referencias a paginas
+  //pagina de comienzo y animacion
   let pagina_comienzo = document.getElementsByClassName("panel_comienzo")[0];
   pagina_comienzo.addEventListener("click", () => {
     pagina_comienzo.classList.add("animar");
@@ -41,6 +57,7 @@ window.onload = function () {
 
   pagina_edificios = document.getElementsByClassName("contenedor_edificios")[0];
   pagina_principal = document.getElementsByClassName("contenedor_principal")[0];
+  pagina_mercado = document.getElementsByClassName("panel_mercado")[0];
   //boton generar monedas
   let boton_alquimia = document.getElementsByName("alquimia")[0];
   //boton recoger
@@ -55,18 +72,21 @@ window.onload = function () {
   });
 
   //boton en pagina edificios para volver a la principal
-  let boton_volver = document.querySelector(".volver img");
-  boton_volver.addEventListener("click", function () {
-    pagina_edificios.style.zIndex = "-1";
-    pagina_principal.style.zIndex = "1";
+  let boton_volver = document.querySelectorAll(".volver img");
+  boton_volver.forEach((element) => {
+    element.addEventListener("click", function () {
+      pagina_edificios.style.zIndex = "-1";
+      pagina_mercado.style.zIndex = "-1";
+      pagina_principal.style.zIndex = "1";
+    });
   });
 };
 
 //cada vez que se genera una moneda la carga tarda mas, para ello
 //uso un timer
 function generarMoneda(boton_alquimia) {
-  //traigo referencias
   let caldero = document.querySelector(".caldero img");
+  monedas = parseInt(localStorage.getItem("monedas"));
   let intervalo = 500 + monedas * 100;
   // let texto_monedas = document.querySelector(".texto_monedas p");
   let moneda = document.querySelector(".moneda");
@@ -90,6 +110,7 @@ function generarMoneda(boton_alquimia) {
     //añadir animacion moneda
     moneda_img.hidden = false;
     moneda.classList.add("animacion_moneda");
+    reproducirEfecto(sonidoMoneda);
 
     caldero.hidden = true;
     // texto_monedas.hidden = false;
@@ -100,6 +121,7 @@ function generarMoneda(boton_alquimia) {
       moneda.classList.remove("animacion_moneda");
       moneda_img.hidden = true;
       boton_alquimia.hidden = false;
+      actualizarMarcador();
       //hago que aparezca el boton para acceder al panel de edificios si el numero de monedas es igual o mayor a 2
       if (monedas >= 2) {
         edificios.hidden = false;
@@ -108,7 +130,6 @@ function generarMoneda(boton_alquimia) {
           pagina_principal.style.zIndex = "-1";
         });
       }
-      actualizarMarcador();
     });
   }, intervalo);
 }
@@ -125,18 +146,17 @@ function recoger(boton_recoger) {
   localStorage.setItem("piedra", piedra);
   localStorage.setItem("madera", madera);
 
-  let tiempo = Math.max ((1 - artesanos),1) * 1000;
+  let tiempo = Math.max(45 - artesanos, 1) * 1000;
   boton_recoger.disabled = true;
   //uso un contador para indicar el tiempo que falta hasta que pueda pulsarse el boton
 
   let contador = document.getElementsByClassName("contador")[0];
   contador.hidden = false;
 
-
   //tiempo hasta activar boton
   let tempo = setTimeout(() => {
     boton_recoger.disabled = false;
-      actualizarMarcador();
+    actualizarMarcador();
   }, tiempo + 300);
 
   //intervalo para contador
@@ -154,7 +174,7 @@ function recoger(boton_recoger) {
   }, 1000);
 }
 
-//funcion para actualizar recursos en marcador visual 
+//funcion para actualizar recursos en marcador visual
 export function actualizarMarcador() {
   let recursos = document.querySelectorAll(".tabla_marcador span");
   let monedaMarcador = recursos[0];
@@ -176,16 +196,83 @@ export function actualizarMarcador() {
   panMarcador.innerText = parseInt(localStorage.getItem("pan"));
 }
 
+let boton_mercado = document.getElementsByName("mercado_principal")[0];
+boton_mercado.addEventListener("click", function () {
+  pagina_principal.style.zIndex = "-1";
+  pagina_mercado.style.zIndex = "1";
+});
+
+//compras dentro de mercado
+let boton_cuero = document.getElementsByName("boton_cuero")[0];
+let boton_piedra = document.getElementsByName("boton_piedra")[0];
+let boton_madera = document.getElementsByName("boton_madera")[0];
+
+boton_cuero.addEventListener("click", function () {
+  let monedas = parseInt(localStorage.getItem("monedas"));
+  if (monedas < 3) {
+    alert("No tienes suficientes monedas");
+  } else {
+    let cuero = parseInt(localStorage.getItem("cuero"));
+    reproducirEfecto(sonidoCompra);
+    cuero++;
+    monedas -= 3;
+    localStorage.setItem("monedas", monedas);
+    localStorage.setItem("cuero", cuero);
+    actualizarMarcador();
+  }
+});
+
+boton_piedra.addEventListener("click", function () {
+  let monedas = parseInt(localStorage.getItem("monedas"));
+  if (monedas < 1) {
+    alert("No tienes suficientes monedas");
+  } else {
+    let piedra = parseInt(localStorage.getItem("piedra"));
+    reproducirEfecto(sonidoCompra);
+    piedra++;
+    monedas--;
+    localStorage.setItem("monedas", monedas);
+    localStorage.setItem("piedra", piedra);
+    actualizarMarcador();
+  }
+});
+
+boton_madera.addEventListener("click", function () {
+  let monedas = parseInt(localStorage.getItem("monedas"));
+  if (monedas < 1) {
+    alert("No tienes suficientes monedas");
+  } else {
+    let madera = parseInt(localStorage.getItem("madera"));
+    reproducirEfecto(sonidoCompra);
+    madera++;
+    monedas--;
+    localStorage.setItem("monedas", monedas);
+    localStorage.setItem("madera", madera);
+    actualizarMarcador();
+  }
+});
+
 //funcion para controlar musica del juego
 const musica = document.getElementById("musica_fondo");
 const botonMusica = document.getElementById("boton_musica");
 
 botonMusica.addEventListener("click", () => {
   if (musica.paused) {
+    
     musica.play();
     botonMusica.textContent = "🔊";
+    sonido.activado = true;
   } else {
     musica.pause();
     botonMusica.textContent = "🔇";
+    sonido.activado = false;
   }
 });
+
+//funcion reproducir sonido compra
+function reproducirEfecto(efecto) {
+  if (sonido.activado) {
+    efecto.currentTime = 0; // reinicia si ya estaba sonando
+    efecto.play();
+  }
+}

@@ -16,6 +16,17 @@
   font-family: "Almendra SC";
 }
 
+.scroll-edificios {
+  max-height: 238px; 
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0 auto;
+  border-radius: 12px;
+  padding: 0.5rem;
+
+}
+
+
 .contenedor_tabla {
   display: flex;
   justify-content: center;
@@ -28,21 +39,28 @@
 .tabla_edificios {
   border-radius: 5px;
   border-collapse: separate;
-  border-spacing: 0 10px; 
+  border-spacing: 0 8px; 
 
+
+}
+
+.recurso {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;          
 
 }
 
 
 .tabla_edificios img {
-  max-width: 30px;
-  max-height: 20px;
+  max-width: 24px;
+  max-height: 18px;
  
 }
 
 .coste {
-  background-color:  rgb(253, 242, 221);
-  font-size: 18px;
+  background-color: rgb(253, 242, 221);
+  font-size: 16px;
   width: 160px;
   text-align: center;
   border-radius: 5px;
@@ -50,25 +68,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 44px;
-  gap: 4px;
-  margin-top: 1.5px;
- 
-
-
+  flex-wrap: wrap;
+  min-height: 44px;   
+  height: auto;       
+  gap: 10px;
+  padding: 6px;
 }
 
+
 .boton_edificio {
-  font-size: 18px;
+  font-size: 16px;
   color: gold;
   text-shadow: 5px 5px 7px rgba(0, 0, 0, 1), 5px 5px 7px rgba(0, 0, 0, 0.8);
   background-color: rgb(39, 37, 30);
   box-shadow: 0px 0px 10px 2px rgb(81, 60, 0);
-  width: 130px;
-  height: 45px;
+  width: 115px;
+  height: 42px;
   border-radius: 5px;
   z-index: 1;
   position: relative;
+  
 }
 
 
